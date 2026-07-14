@@ -29,15 +29,14 @@ Tell the user what will happen, then confirm. Skip the install if those skills a
 
 ## 3. Install
 
-Run this skill's [`install.sh`](./install.sh):
+Run this skill's [`install.sh`](./install.sh), passing one `-a` per harness detected in step 1:
 
 ```sh
-bash install.sh                          # install to all detected agents
-bash install.sh -a claude-code -a codex  # or target specific harnesses (one -a each, from step 1)
-PM=pnpm bash install.sh                  # force a package manager (default: auto-detect)
+bash install.sh -a claude-code -a codex  # one -a per detected harness
+PM=pnpm bash install.sh -a claude-code   # force a package manager (default: auto-detect)
 ```
 
-Extra args are forwarded to every `skills add`. Done when the three groups above are installed.
+Extra args are forwarded to every `skills add`. Omitting `-a` installs to every supported agent — that works too, but agents that can't do global installs (e.g. PromptScript) are skipped with a harmless warning. Done when the three groups above are installed.
 
 ## 4. Wire standing-orders into each harness
 
