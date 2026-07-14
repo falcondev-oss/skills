@@ -17,14 +17,14 @@ This is prompt-driven, not a script: detect, present the plan, confirm, then act
 
 ## 1. Detect
 
-- `skills ls -g` — which of the skills below are already installed?
+- Which of the skills below are already installed? (`pnpm dlx skills@latest ls -g`, or your package manager's equivalent.)
 - Which harnesses does the user have? Check for each config dir: `~/.claude` (Claude Code), `~/.codex` (Codex), `~/.gemini` (Gemini CLI), `~/.cursor` (Cursor), `~/.config/opencode` (opencode). The standing-orders line goes into every one present.
 
 ## 2. Present the plan
 
-Tell the user what will happen, then confirm. Skip the install if `skills ls` already shows everything.
+Tell the user what will happen, then confirm. Skip the install if those skills are already installed.
 
-- [`install.sh`](./install.sh) installs the root `ponytail` skill, the 22 skills in the Matt Pocock "Mattpocock Skills" section (not "Other"), and every skill from this repo — all globally. It pins the exact skill names with `--skill`, so the interactive category picker is bypassed.
+- [`install.sh`](./install.sh) installs the root `ponytail` skill, the 22 skills in the Matt Pocock "Mattpocock Skills" section (not "Other"), and every skill from this repo — all globally. It pins the exact skill names with `--skill`, so the interactive category picker is bypassed. It runs the skills CLI through the user's package manager (`pnpm`/`yarn`/`bun`/`npm`), so nothing is installed globally on the system.
 - Step 4 adds the standing-orders line to each detected harness root config.
 
 ## 3. Install
@@ -34,9 +34,10 @@ Run this skill's [`install.sh`](./install.sh):
 ```sh
 bash install.sh                       # install to all detected agents
 bash install.sh -a claude-code,codex  # or target specific harnesses (from step 1)
+PM=pnpm bash install.sh               # force a package manager (default: auto-detect)
 ```
 
-Any extra args are forwarded to every `skills add`. Done when `skills ls -g` lists `ponytail`, the Matt Pocock skills, and every skill from this repo.
+Extra args are forwarded to every `skills add`. Done when the three groups above are installed.
 
 ## 4. Wire standing-orders into each harness
 

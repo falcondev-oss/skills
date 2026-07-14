@@ -5,7 +5,7 @@
 Add this repo's skills to your coding agent:
 
 ```sh
-npx skills@latest add falcondev-oss/skills
+npx skills@latest add falcondev-oss/skills -g
 ```
 
 Then run the [`setup-falcondev-oss-skills`](skills/setup-falcondev-oss-skills/SKILL.md) skill in your agent (e.g. `/setup-falcondev-oss-skills`). It installs the recommended skill set — [`ponytail`](https://github.com/dietrichgebert/ponytail), the [Matt Pocock](https://github.com/mattpocock/skills) skills, and every skill from this repo — and wires the `standing-orders` line into each agent harness's root config, so the right skill fires in every conversation.
