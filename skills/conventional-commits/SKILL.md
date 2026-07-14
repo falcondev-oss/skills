@@ -7,6 +7,8 @@ description: Format commit messages, branch names, PR titles, and issue titles t
 
 Every commit, branch, PR, and issue you name follows the Conventional Commits 1.0.0 spec exactly. Two rules override anything else: each commit is **atomic** (one logical change), and you **verify** the message against the spec and the actual diff before it lands.
 
+**Exception — keep tool-generated default messages.** Merges and similar auto-generated commits keep their default message (`Merge branch ...`, `Merge pull request ...`, `Revert ...`), never rewritten into a Conventional Commits subject. Many tools identify and filter these by their default prefix, so the prefix must stay intact.
+
 ## The format
 
 ```
