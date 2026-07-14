@@ -46,6 +46,16 @@ Every commit, branch, PR, and issue you name follows the Conventional Commits 1.
 - Footers: one blank line after the body. Each footer is `Token: value` or `Token #value`. The token replaces spaces with `-` (e.g. `Reviewed-by`, `Refs`), **except** `BREAKING CHANGE`.
 - Breaking change: either `!` in the prefix, or a footer `BREAKING CHANGE: <description>` — the token must be uppercase (`BREAKING-CHANGE` is synonymous).
 
+## Common presets
+
+Reach for these exact messages when the diff matches — they keep recurring commits consistent:
+
+- **`style: lint`** — the commit contains _only_ linting/formatting changes (no change to code meaning).
+- **`build(deps): upgrade deps`** — a broad dependency update touching multiple packages.
+- **`build(deps): upgrade <package>`** — a dependency update scoped to one package, e.g. `build(deps): upgrade vitest`.
+
+A preset applies only when the staged diff is genuinely just that change; if anything else is bundled in, split it out (see step 2 below) rather than stretching the preset.
+
 ## Making a commit
 
 1. **Survey the whole diff.** Run `git status` and `git diff` (staged and unstaged). Understand every hunk before writing anything.
