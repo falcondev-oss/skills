@@ -32,9 +32,9 @@ Tell the user what will happen, then confirm. Skip the install if those skills a
 Run this skill's [`install.sh`](./install.sh):
 
 ```sh
-bash install.sh                       # install to all detected agents
-bash install.sh -a claude-code,codex  # or target specific harnesses (from step 1)
-PM=pnpm bash install.sh               # force a package manager (default: auto-detect)
+bash install.sh                          # install to all detected agents
+bash install.sh -a claude-code -a codex  # or target specific harnesses (one -a each, from step 1)
+PM=pnpm bash install.sh                  # force a package manager (default: auto-detect)
 ```
 
 Extra args are forwarded to every `skills add`. Done when the three groups above are installed.

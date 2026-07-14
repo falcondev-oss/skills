@@ -6,8 +6,10 @@
 #
 # Runs the skills CLI through the user's package manager (transient, no global
 # CLI install). Detection order is pnpm, yarn, bun, npm; override with
-# PM=<pnpm|yarn|bun|npm>. Any extra args (e.g. `-a claude-code,codex`) are
+# PM=<pnpm|yarn|bun|npm>. Any extra args (e.g. `-a claude-code -a codex`) are
 # forwarded to every `skills add` call, so you can target specific harnesses.
+# The CLI takes one skill/agent per flag, so lists are repeated flags, not
+# comma-separated.
 set -euo pipefail
 
 pm="${PM:-}"
@@ -28,10 +30,17 @@ esac
 # ponytail — root skill only (repo also ships ponytail-audit, -review, -help, etc.)
 run add dietrichgebert/ponytail -g -y --skill ponytail "$@"
 
-# Matt Pocock — only the "Mattpocock Skills" section, not "Other"
-run add mattpocock/skills -g -y --skill \
-  ask-matt,code-review,codebase-design,diagnosing-bugs,domain-modeling,grill-me,grill-with-docs,grilling,handoff,implement,improve-codebase-architecture,prototype,research,resolving-merge-conflicts,setup-matt-pocock-skills,tdd,teach,to-spec,to-tickets,triage,wayfinder,writing-great-skills \
-  "$@"
+# Matt Pocock — only the "Mattpocock Skills" section, not "Other" (one --skill per name)
+mattpocock=(
+  ask-matt code-review codebase-design diagnosing-bugs domain-modeling
+  grill-me grill-with-docs grilling handoff implement
+  improve-codebase-architecture prototype research resolving-merge-conflicts
+  setup-matt-pocock-skills tdd teach to-spec to-tickets triage
+  wayfinder writing-great-skills
+)
+skill_flags=()
+for s in "${mattpocock[@]}"; do skill_flags+=(--skill "$s"); done
+run add mattpocock/skills -g -y "${skill_flags[@]}" "$@"
 
 # this repo — every skill
 run add falcondev-oss/skills -g -y --skill '*' "$@"
