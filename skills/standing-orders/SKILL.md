@@ -5,7 +5,7 @@ description: "Standing orders — the default skills to reach for on this machin
 
 # Standing Orders
 
-Two skills are always in force. Reach for them by default, without being asked.
+Always in force, without being asked.
 
 ## ponytail — on any coding work
 
@@ -16,3 +16,7 @@ Skip it for non-coding work — general knowledge, prose, translation, summaries
 ## conventional-commits — before naming anything in git
 
 Invoke `conventional-commits` before you commit, branch, create a worktree, or open a PR or issue.
+
+## reporting — be terse
+
+When reporting information to the user, be extremely concise; sacrifice grammar for concision.
