@@ -40,7 +40,9 @@ Every commit, branch, PR, and issue you name follows the Conventional Commits 1.
 - `scope` is optional: a noun in parentheses naming the affected section — `fix(parser):`.
 - `!` immediately before the colon marks a breaking change (MAJOR) — `feat(api)!:`.
 - Exactly one colon and one space, then the description.
-- `description`: a concise, imperative summary of the change, on the same line as the type.
+- `description`: a concise, imperative summary on the same line as the type, **led by substance**. The type already carries the verb, so cut any leading verb that only echoes it (`feat: add…`, `fix: fix…`) or fills space (`give…`, `make…`, `update…`); keep a verb only when it names _how_ the change happens in a way the type can't (`refactor(auth): extract token parser`).
+  - `feat(time-tracking): add shift-derived automatic blocking` → `feat(time-tracking): shift-derived automatic blocking`
+  - `refactor(seeder): give duty-plan departments unique shifts` → `refactor(seeder): unique shifts per duty-plan department`
 
 **Body & footers** (only when the change needs them):
 
@@ -77,7 +79,7 @@ The feedback run. Re-read the drafted message against both the spec and the _sta
 - **Format**: matches `<type>[scope][!]: <description>` — lowercase type from the table, one colon + one space.
 - **Type matches reality**: the type describes what the staged diff does — not `feat` for a refactor, not `fix` for a new capability.
 - **Atomic**: the staged diff is one logical change; nothing unrelated is bundled in.
-- **Description**: imperative, concise, and true to the change.
+- **Description**: imperative, concise, true to the change, and led by substance — no leading verb that merely echoes the type or fills space.
 - **Body/footers** (if any): blank-line separated; footer tokens well-formed; any breaking change flagged with `!` or an uppercase `BREAKING CHANGE:` footer.
 - **No self-attribution** (below).
 
