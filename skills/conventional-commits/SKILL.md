@@ -33,6 +33,10 @@ Every commit, branch, PR, and issue you name follows the Conventional Commits 1.
 | `build`    | build system or dependencies                            | —      |
 | `ci`       | CI configuration                                        | —      |
 | `chore`    | anything else with no production-code effect            | —      |
+| `wayfinder`| a wayfinder map ticket/issue                            | —      |
+| `spec`     | a spec (e.g. from a wayfinder map via `/to-spec`)       | —      |
+
+A wayfinder map ticket/issue is always `wayfinder`, and a spec is always `spec` — the artifact decides the type, overriding what the change itself does (`feat`, `fix`, etc.).
 
 **Subject-line rules:**
 
