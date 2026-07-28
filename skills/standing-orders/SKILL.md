@@ -13,6 +13,10 @@ Invoke `ponytail` before you write, add, refactor, fix, review, or design code, 
 
 Skip it for non-coding work — general knowledge, prose, translation, summaries, recipes.
 
+## adding new dependencies (e.g. npm)
+
+**Always** install the latest compatible version (if there are no compatibility requirements just use the latest version). **Always** research the latest compatible version and **never** base it solely on your internal knowledge.
+
 ## conventional-commits — before naming anything in git
 
 Invoke `conventional-commits` before you commit, branch, create a worktree, or open a PR or issue.
