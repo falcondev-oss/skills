@@ -1,7 +1,5 @@
 # Coding Standards
 
-The Standards axis of `/code-review` checks the diff against this document; a review that leaves one rule unflagged is incomplete.
-
 ## Companion standards
 
 Rules scoped to one package or feature live in a sibling `*_STANDARDS.md` — e.g. `PRISMA_STANDARDS.md`. Each is in force only where its subject is present: a `schema.prisma` in the tree puts the Prisma rules in force. List the siblings, read every one whose subject the repo uses, and ignore the rest.

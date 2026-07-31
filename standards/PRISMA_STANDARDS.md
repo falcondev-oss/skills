@@ -1,6 +1,6 @@
 # Prisma Coding Standards
 
-For repos using Prisma, on top of `CODING_STANDARDS.md`. The Standards axis of `/code-review` checks the diff against both; a review that leaves one rule unflagged is incomplete.
+Enforce if Prisma ORM is present in this project.
 
 ## `@default(...)`
 
