@@ -40,8 +40,10 @@ The anti-pattern is the **mirror test**: one that restates the implementation li
 
 ## Comments
 
-**Comment what the code can't say.** A comment earns its place by carrying what the code cannot — _why_ this approach over the obvious one, a non-obvious invariant or consequence, a gotcha or constraint, or a reference. A comment that translates the line beneath it into English (`// increment the counter` over `counter++`) is a second thing to keep in sync and tells the reader nothing they didn't just read.
+**Every comment load-bearing.** One bar, and it is one-sided: a comment earns its place only if you can name, in a sentence, what a competent reader would get wrong without it — _why_ this approach over the obvious one, a non-obvious invariant or consequence, a gotcha or external constraint, a reference. No such sentence, no comment: the code ships alone.
 
-The test: delete the comment and read the code. If a competent reader recovers the same information in seconds, leave it deleted. If a decision, a reason, or an invariant the code enforces but never states went missing, keep it.
+The audience is **the reader who never saw the diff** — a stranger opening the file in a year, with no ticket, no PRD, no chat history — read in the register of JSDoc on a library another programmer consumes. The ticket, ADR, or spec the code satisfies, what was tried first, and any justification aimed at the reviewer belong in the PR description; a comment addressed to whoever requested the code fails the bar even when it is accurate.
+
+The anti-pattern is the **translation**: a comment restating the line beneath it (`// increment the counter` over `counter++`). It carries no load, and it is a second thing to keep in sync.
 
 Model case — given `if (parsed.dateIso !== todayIso) return []`, the code shows only that stale dates yield an empty array. The comment carries the intent that check serves: _stale data is never read, so effectively only today's data is live._
