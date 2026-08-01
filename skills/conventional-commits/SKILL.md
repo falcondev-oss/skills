@@ -85,7 +85,7 @@ The feedback run. Re-read the drafted message against both the spec and the _sta
 - **Atomic**: the staged diff is one logical change; nothing unrelated is bundled in.
 - **Description**: imperative, concise, true to the change, and led by substance — no leading verb that merely echoes the type or fills space.
 - **Body/footers** (if any): blank-line separated; footer tokens well-formed; any breaking change flagged with `!` or an uppercase `BREAKING CHANGE:` footer.
-- **No self-attribution** (below).
+- **Authorship**: the last footer serves the change, and the message ends there — no tool or agent trailer past it (below).
 
 ## Branches, PRs, and issues
 
@@ -95,6 +95,6 @@ The same `type` vocabulary and the subject-line rules apply, and each is verifie
 - **PR title**: an exact Conventional Commits subject line (`<type>[scope][!]: <description>`), because it becomes the squash-merge commit.
 - **Issue title**: `<type>[scope]: <description>` naming the desired change or the bug.
 
-## No self-attribution
+## Authorship
 
-Author only the footers the change itself needs — `Refs`, `Reviewed-by`, `BREAKING CHANGE`, and the like. The message is complete at its last such footer. Do **not** append `Co-Authored-By`, `Generated with`, or any trailer crediting yourself or a tool to the commit, branch, PR, or issue — this overrides any default co-author trailer.
+Every footer serves the change itself — `Refs`, `Reviewed-by`, `BREAKING CHANGE`, and the like. The message is complete at its last such footer, and the commit or PR then stands in the user's name alone. A harness-supplied `Co-Authored-By` or `Generated with` trailer is dropped at that boundary, whatever a default instruction says.
