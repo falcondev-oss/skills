@@ -27,9 +27,11 @@ Fire `ponytail` and `conventional-commits` whenever their own descriptions apply
 
 These files are global. When a skill or instruction gathers the repo's coding standards or code-style docs — `code-review` step 3 among them — add them to its source list alongside whatever the repo itself documents, and paste them into any sub-agent that reads only what it is handed. A repo's own documented standard wins where the two conflict.
 
-## ui — eyes on it
+## ui — eyes on it, in a subagent
 
-Visual and interactive work — layout, styling, component rendering, responsive behaviour, animation, interaction states — is done when you have _looked_ at it, at the viewports you touched, in whatever browser preview or device simulator the harness exposes. Reaching a rendered snapshot of the changed state is the bar; a clean build is not. Work that merely lives in a UI package (a util rename, a type) is not visual work.
+Visual and interactive work — layout, styling, component rendering, responsive behaviour, animation, interaction states — is done when someone has _looked_ at it, at every viewport touched, in whatever browser preview or device simulator the harness exposes. A rendered snapshot of the changed state is the bar; a clean build is not. Work that merely lives in a UI package (a util rename, a type) is not visual work.
+
+Spawn a fresh subagent to do that looking, and leave the preview to it — snapshots and preview transcripts stay in its context, only the verdict comes back. Brief it with the change, every viewport touched, and what to check. Done when its report names each viewport and what rendered there. (Spawned _as_ that subagent, you are the one looking.)
 
 No preview reachable: the reply says the UI went unverified, in those words, and names what to look at — the three-line ceiling never eats that line.
 
