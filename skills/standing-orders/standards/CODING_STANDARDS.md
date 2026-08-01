@@ -40,8 +40,8 @@ The anti-pattern is the **mirror test**: one that restates the implementation li
 
 **Every comment load-bearing.** One bar, and it is one-sided: a comment earns its place only if you can name, in a sentence, what a competent reader would get wrong without it — _why_ this approach over the obvious one, a non-obvious invariant or consequence, a gotcha or external constraint, a reference. No such sentence, no comment: the code ships alone.
 
+**That sentence is the comment.** A telegram: one sentence, sent and done. A second sentence means the rest — how the mechanism works, what format it writes, what else follows — belongs to the reader who goes looking, not to the line above the function. Prune by clause: cut any clause the reader could lose and still avoid the mistake you named. What survives a whole paragraph about an encryption helper is one telegram: _Losing `SECRET_KEY` loses every stored mailbox credential — back it up with the database._
+
 The audience is **the reader who never saw the diff** — a stranger opening the file in a year, with no ticket, no PRD, no chat history — read in the register of JSDoc on a library another programmer consumes. The ticket, ADR, or spec the code satisfies, what was tried first, and any justification aimed at the reviewer belong in the PR description; a comment addressed to whoever requested the code fails the bar even when it is accurate.
 
-The anti-pattern is the **translation**: a comment restating the line beneath it (`// increment the counter` over `counter++`). It carries no load, and it is a second thing to keep in sync.
-
-Model case — given `if (parsed.dateIso !== todayIso) return []`, the code shows only that stale dates yield an empty array. The comment carries the intent that check serves: _stale data is never read, so effectively only today's data is live._
+The anti-pattern is the **translation**: a comment restating the line beneath it (`// increment the counter` over `counter++`). It carries no load, and it is a second thing to keep in sync. Given `if (parsed.dateIso !== todayIso) return []`, the code already shows that stale dates yield an empty array; the comment carries the intent behind the check — _stale data is never read, so effectively only today's data is live._
