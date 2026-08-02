@@ -27,13 +27,14 @@ case "$pm" in
   *)    echo "No supported package manager found (pnpm, yarn, bun, npm)." >&2; exit 1 ;;
 esac
 
-# ponytail — root skill only (repo also ships ponytail-audit, -review, -help, etc.)
+# ponytail
 run add dietrichgebert/ponytail -g -y --skill ponytail "$@"
+run add dietrichgebert/ponytail -g -y --skill ponytail-review "$@"
 
 # Matt Pocock — only the "Mattpocock Skills" section, not "Other" (one --skill per name)
 mattpocock=(
   ask-matt code-review codebase-design diagnosing-bugs domain-modeling
-  grill-me grill-with-docs grilling handoff implement
+  grill-me grill-with-docs grilling handoff
   improve-codebase-architecture prototype research resolving-merge-conflicts
   setup-matt-pocock-skills tdd teach to-spec to-tickets triage
   wayfinder writing-great-skills
