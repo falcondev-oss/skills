@@ -1,0 +1,4 @@
+interface:
+  display_name: "Share File"
+  short_description: "Upload any file and return a public URL"
+  default_prompt: "Use $shareflare to upload this file and return its public URL."
