@@ -1,0 +1,7 @@
+interface:
+  display_name: "ACE"
+  short_description: "Write every user message in controlled English"
+  default_prompt: "Use $ace to answer me in Attempto Controlled English."
+
+policy:
+  allow_implicit_invocation: false

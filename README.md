@@ -14,6 +14,7 @@ Then run the [`setup-falcondev-oss-skills`](skills/setup-falcondev-oss-skills/SK
 
 | Skill | What it does |
 |---|---|
+| [`ace`](skills/ace/SKILL.md) | Writes every user-facing message in Attempto Controlled English for clear and unambiguous communication. |
 | [`conventional-commits`](skills/conventional-commits/SKILL.md) | Formats commit messages, branch names, PR titles, and issue titles to the [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/) spec. Splits oversized diffs into atomic commits and verifies every message against the spec before it lands. |
 | [`address-pr-comments`](skills/address-pr-comments/SKILL.md) | Works through the review comments on a pull request: triages each into a change request vs. a question/opinion, implements the changes, replies to and resolves every thread, and confirms the PR's checks pass. |
 | [`implement`](skills/implement/SKILL.md) | Implements a piece of work based on a spec or set of tickets. |
