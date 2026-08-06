@@ -18,3 +18,9 @@ If the work touches UI, run /impeccable polish on the changed source files. It r
 Commit your work to a new branch from the current base.
 
 Push the branch to origin and open a pull request with `gh pr create`. Give it a body covering what changed and why (drawn from the spec or tickets) and linking any tickets it closes (`Closes #123`). Always attach screenshots or videos for any visual changes.
+
+The body must also list every review that ran, with the number of issues it found and how many of those you fixed. Include reviews that found nothing, and name any finding you left unfixed with its reason:
+
+| Review | Found | Fixed |
+|---|---|---|
+| <review> | <count> | <count> |
