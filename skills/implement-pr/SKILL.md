@@ -11,11 +11,15 @@ Use /tdd where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite once at the end.
 
-Once done, review the work with /code-review and /ponytail-review. Fix every finding, then re-run each review whose findings you fixed. Leave a finding unfixed only with a reason you can state in the PR body.
+Once done, fetch and merge the latest base branch into your working branch, so the reviews see the code that will actually merge. Resolve any conflicts with /resolving-merge-conflicts.
+
+Then review the work with /code-review and /ponytail-review. Fix every finding, then re-run each review whose findings you fixed. Leave a finding unfixed only with a reason you can state in the PR body.
 
 If the work touches UI, run /impeccable polish on the changed source files. It refines the new UI into the app's existing design language and applies its own fixes, so it belongs after the reviews above, not among them.
 
 Commit your work to a new branch from the current base.
+
+Fetch the base branch again. If it moved, merge it in, resolve conflicts, and re-run typechecking and the full test suite before continuing.
 
 Push the branch to origin and open a pull request with `gh pr create`. Give it a body covering what changed and why (drawn from the spec or tickets) and linking any tickets it closes (`Closes #123`). Always attach screenshots or videos for any visual changes.
 
