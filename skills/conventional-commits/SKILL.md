@@ -101,3 +101,25 @@ As per the EU AI act you must:
 
 - always add yourself as co-author of the commit, PR, or issue.
 - always add this exact footer note: "Created with AI. Verified by a human."
+  Add this:
+
+### Commit-message formatting
+
+When committing from a shell, pass each paragraph as a separate `-m` argument. Ordinary quoted `\n` remains literal text.
+
+```sh
+git commit \
+  -m 'type(scope): summary' \
+  -m 'Body paragraph.' \
+  -m 'Closes #123'
+```
+
+For exact formatting, use `git commit -F <message-file>` with real line breaks.
+
+Before pushing, verify:
+
+```sh
+git show -s --format=%B HEAD | sed -n l
+```
+
+Completion criterion: every intended line appears separately, with no literal `\n`.
