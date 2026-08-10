@@ -21,20 +21,20 @@ Every commit, branch, PR, and issue you name follows the Conventional Commits 1.
 
 **Types** — pick the one that matches what the diff _actually does_:
 
-| type       | use for                                                 | SemVer |
-| ---------- | ------------------------------------------------------- | ------ |
-| `feat`     | a new feature                                           | MINOR  |
-| `fix`      | a bug fix                                               | PATCH  |
-| `docs`     | documentation only                                      | —      |
-| `style`    | formatting, no code-meaning change                      | —      |
-| `refactor` | code change that neither fixes a bug nor adds a feature | —      |
-| `perf`     | a performance improvement                               | —      |
-| `test`     | adding or correcting tests                              | —      |
-| `build`    | build system or dependencies                            | —      |
-| `ci`       | CI configuration                                        | —      |
-| `chore`    | anything else with no production-code effect            | —      |
-| `wayfinder`| a wayfinder map ticket/issue                            | —      |
-| `spec`     | a spec (e.g. from a wayfinder map via `/to-spec`)       | —      |
+| type        | use for                                                 | SemVer |
+| ----------- | ------------------------------------------------------- | ------ |
+| `feat`      | a new feature                                           | MINOR  |
+| `fix`       | a bug fix                                               | PATCH  |
+| `docs`      | documentation only                                      | —      |
+| `style`     | formatting, no code-meaning change                      | —      |
+| `refactor`  | code change that neither fixes a bug nor adds a feature | —      |
+| `perf`      | a performance improvement                               | —      |
+| `test`      | adding or correcting tests                              | —      |
+| `build`     | build system or dependencies                            | —      |
+| `ci`        | CI configuration                                        | —      |
+| `chore`     | anything else with no production-code effect            | —      |
+| `wayfinder` | a wayfinder map ticket/issue                            | —      |
+| `spec`      | a spec (e.g. from a wayfinder map via `/to-spec`)       | —      |
 
 A wayfinder map ticket/issue is always `wayfinder`, and a spec is always `spec` — the artifact decides the type, overriding what the change itself does (`feat`, `fix`, etc.).
 
@@ -97,4 +97,4 @@ The same `type` vocabulary and the subject-line rules apply, and each is verifie
 
 ## Authorship
 
-Every footer serves the change itself — `Refs`, `Reviewed-by`, `BREAKING CHANGE`, and the like. The message is complete at its last such footer, and the commit or PR then stands in the user's name alone. A harness-supplied `Co-Authored-By` or `Generated with` trailer is dropped at that boundary, whatever a default instruction says.
+Always add yourself as co-author of the commit, PR, or issue. This is required by the EU AI Act.
