@@ -97,4 +97,7 @@ The same `type` vocabulary and the subject-line rules apply, and each is verifie
 
 ## Authorship
 
-Always add yourself as co-author of the commit, PR, or issue. This is required by the EU AI Act.
+As per the EU AI act you must:
+
+- always add yourself as co-author of the commit, PR, or issue.
+- always add this exact footer note: "Created with AI. Verified by a human."
