@@ -11,7 +11,6 @@ Use `$tdd` where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite once at the end.
 
-Once done, review the work with `$code-review` and `$ponytail-review ultra`. If the work touches UI run `$impeccable polish`.
-Fix **all** findings even if they differ from the spec, then re-run each review whose findings you fixed.
+Once done, run `$implementation-review` on the work.
 
 Commit your work to a new branch from the current base.
