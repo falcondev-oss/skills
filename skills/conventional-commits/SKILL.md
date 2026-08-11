@@ -97,11 +97,13 @@ The same `type` vocabulary and the subject-line rules apply, and each is verifie
 
 ## Authorship
 
-As per the EU AI act you must:
+As per the EU AI act you must add this footer to every commit:
 
-- always add yourself as co-author of the commit, PR, or issue.
-- always add this exact footer note: "Created with AI. Verified by a human."
-  Add this:
+```
+Created with AI. Verified by a human.
+
+Co-authored-by: <your name> <your email>
+```
 
 ### Commit-message formatting
 
