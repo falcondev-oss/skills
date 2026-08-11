@@ -4,10 +4,11 @@ The handle and field API are identical everywhere. Only **binding** and **re-ren
 
 ## React (`@falcondev-oss/form-react`)
 
-React has no built-in reactivity, so the adapter bridges `@vue/reactivity` to React renders with an internal tick counter. Two consequences drive everything:
+React has no built-in reactivity, so the adapter bridges `@vue/reactivity` to React renders with an internal tick counter. Three consequences drive everything:
 
 1. **`useForm` is memoized** — the form instance is created once and survives re-renders. It internally watches `errors`/`isLoading`/`isChanged`/`isDirty`, **and every `$use`d field's `value`/`errors`**, and forces a re-render of **the component that called `useForm`** when any change.
-2. **`$use()` does not subscribe the caller.** The field's watcher re-renders the `useForm`-owning component, not whoever calls `$use()`. A **child** component that renders a field it received as a prop must call `useField(field)` (or be a `FormFieldMemo`) to re-render on that field's changes — otherwise it only updates via the parent cascade, which breaks under memoization.
+2. **`sourceValues` must be a stable reference** (and a value, not a getter) — the options are read once inside a `useMemo`; only `sourceValues` and `submit` are re-synced afterwards, by identity. An inline object re-seeds the form every render; an inline getter is captured at mount and never re-runs for React state. See the `sourceValues` section in `SKILL.md`.
+3. **`$use()` does not subscribe the caller.** The field's watcher re-renders the `useForm`-owning component, not whoever calls `$use()`. A **child** component that renders a field it received as a prop must call `useField(field)` (or be a `FormFieldMemo`) to re-render on that field's changes — otherwise it only updates via the parent cascade, which breaks under memoization.
 
 ### Binding an input — `field.model`
 

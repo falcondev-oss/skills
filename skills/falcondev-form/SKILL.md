@@ -37,7 +37,7 @@ import z from 'zod'
 
 const form = useForm({
   schema: z.object({ name: z.string(), age: z.number() }),
-  sourceValues: { name: 'John Doe', age: 42 }, // initial data (NullableDeep), or a getter / ref
+  sourceValues, // initial data (NullableDeep); a value, getter, or ref — React needs a stable reference
   async submit({ values }) {
     // `values` is validated OUTPUT: { name: string, age: number }
     await api.save(values)
@@ -56,26 +56,40 @@ await form.submit()              // validates whole schema, runs submit if valid
 ## `useForm(options)`
 
 - `schema` — any **Standard Schema** that *also* exposes Standard JSON Schema (zod v4, arktype). JSON Schema drives `field.schema` metadata and required-detection. Non-JSON-representable types (Date, bigint, Map…) need a codec/transform or metadata extraction silently degrades (a console warning fires).
-- `sourceValues` — initial `NullableDeep` data. A value, a getter `() => data`, or (Vue) a `ref`. May be `undefined` → form is **pending** (`isLoading`/`field.isPending` true, `data` is `undefined`, writes ignored) until it resolves. When it later changes: if the form is **not dirty**, the form resets to the new values; if dirty, the update is skipped with a warning (except during submit).
+- `sourceValues` — initial `NullableDeep` data. A value, a getter `() => data`, or (Vue) a `ref`. In **React** it must be a *stable reference* — see below. May be `undefined` → form is **pending** (`isLoading`/`field.isPending` true, `data` is `undefined`, writes ignored) until it resolves. When it later changes: if the form is **not dirty**, the form resets to the new values; if dirty, the update is skipped with a warning (except during submit).
 - `submit({ values })` — `async`, receives the **validated output**. Return `void`/`{success:true}` → form marked pristine; `{success:false}` → stays dirty. **`await` everything that must finish before the form settles** — most importantly cache/query invalidations, so fresh data flows back into `sourceValues` before the form is marked pristine (an un-awaited invalidation lets the form settle against stale data). With TanStack Query: `await queryClient.invalidateQueries(...)` directly in `submit`, or do it in the mutation's `onSuccess` and `await mutateAsync(...)` in `submit` (awaiting the mutation awaits `onSuccess`).
 - `disabled?` — `boolean | Ref | getter`. Blocks `handleChange`/`handleBlur`/`reset` on all fields.
 - `hooks?` — lifecycle hooks (see `reference/patterns.md`).
 
 ### Writing `sourceValues` (do it this way)
 
-Make `sourceValues` a getter with three ordered branches: still-loading → existing entity → blank defaults.
+Three ordered branches: still-loading → existing entity → blank defaults. Vue takes them as a getter; React takes them as a `useMemo`ed value.
 
 ```ts
+// Vue — getter, tracked reactively
 useForm({
   schema,
   sourceValues: () => {
-    if (isLoading) return undefined          // 1. source still loading → form is pending
-    if (entity) return entity                // 2. edit: return the whole entity object
+    if (isLoading.value) return undefined    // 1. source still loading → form is pending
+    if (entity.value) return entity.value    // 2. edit: return the whole entity object
     return { name: null, age: null }         // 3. create: blank defaults
   },
   async submit({ values }) { /* … */ },
 })
 ```
+
+```tsx
+// React — same branches, wrapped in useMemo
+const sourceValues = useMemo(() => {
+  if (isLoading) return undefined
+  if (entity) return entity
+  return { name: null, age: null }
+}, [isLoading, entity])
+
+useForm({ schema, sourceValues, async submit({ values }) { /* … */ } })
+```
+
+**In React `sourceValues` must be a stable reference.** Never inline the object (or a getter) in the `useForm` call: React re-runs the component body every render, so a fresh object identity re-seeds the form on every render — resetting a clean form and warning on a dirty one. Memoize it (`useMemo`), or hoist a constant to module scope, or pass query data directly (`sourceValues: query.data` — already stable). Getters are worse than useless here: the adapter captures the getter **once** on mount, so one built over React state or props is frozen at its first-render closure and never sees an update.
 
 - **Return `undefined` while the source is loading** (e.g. the fetch for the entity being edited is pending). This puts the form in the pending state instead of seeding it with a wrong/empty shape you'd have to overwrite later.
 - **Return the existing entity as one whole object** — don't hand-build `{ name: entity?.name, age: entity?.age, … }` with optional chaining per key. If the entity doesn't match the schema, spread and override just the divergent fields: `return { ...entity, tags: entity.tags ?? [] }`.
