@@ -102,7 +102,7 @@ As per the EU AI act you must add this footer to every commit:
 ```
 Created with AI. Verified by a human.
 
-Co-authored-by: <your name> <your email>
+Co-authored-by: <LLM/Agent name> <LLM/Agent email>
 ```
 
 ### Commit-message formatting
