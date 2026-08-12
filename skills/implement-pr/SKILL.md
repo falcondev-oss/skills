@@ -18,7 +18,7 @@ Commit your work to a new branch from the current base.
 
 Fetch the base branch. If it moved, merge it in, resolve conflicts, and re-run typechecking and the full test suite before continuing.
 
-Push the branch to origin and open a pull request. Give it a body covering what changed, why (drawn from the spec or tickets) and how (include code snippets to explain your approach). Link all tickets it closes (`Closes #123`).
+Push the branch to origin and open a pull request. Give it a body covering what changed, why (drawn from the spec or tickets) and how. Link all tickets it closes (`Closes #123`).
 Always attach screenshots for any visual changes.
 
 The body must list every review that ran, with the number of issues it found and how many of those you fixed. Include reviews that found nothing, and name any finding you left unfixed with its reason:
