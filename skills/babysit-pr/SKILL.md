@@ -9,7 +9,7 @@ If your harness offers tools to monitor a PR, use them so you can respond when c
 
 Some repos we work in have AI review bots. They're helpful, even if they are not always right.
 
-Only act on checks and comments newer than the latest push. Verify every bot finding against the source before changing code. Fix real findings and CI failures, distinguish repository failures from infrastructure flakes, and reply with a written reason when dismissing false positives.o
+Only act on checks and comments newer than the latest push. Verify every bot finding against the source before changing code. Fix real findings and CI failures, distinguish repository failures from infrastructure flakes, and reply with a written reason when dismissing false positives.
 
 Keep an eye on changes to the base branch and rebase when needed.
 
