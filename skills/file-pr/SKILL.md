@@ -31,4 +31,4 @@ The description must list every review that ran, with the number of issues it fo
 
 Link all tickets it closes and always attach screenshots for any visual changes.
 
-Open a real PR, not a draft.
+Open a real PR, not a draft. Add the `skip-ci` and `skip-deploy` labels to the PR, if the user requests to skip ci and the labels exist.
