@@ -10,7 +10,7 @@ Use `$ponytail ultra` as a strict guideline.
 Use `$tdd` where possible, at pre-agreed seams.
 If doing user-facing changes always verify the entire flow end-to-end with a browser, iOS simulator or Android emulator.
 
-Run typechecking regularly, single test files regularly, and the full test suite once at the end.
+Run the full check suite (typechecking, linting, tests) once at the end as per repository guidelines.
 
 Once done, run `$implementation-review` on the work.
 
