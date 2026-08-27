@@ -1,6 +1,6 @@
 ---
 name: implementation-review
-description: "Review completed work against the spec and code-quality standards."
+description: "Review completed work against the spec and code-quality standards. Use when explicitly asked by another skill or the user."
 ---
 
 Run `$code-review` and fix every finding. Re-run each review whose findings you fixed. Repeat until all reviews come back without findings.
