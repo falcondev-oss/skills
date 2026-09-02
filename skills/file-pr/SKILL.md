@@ -10,17 +10,21 @@ Before filing, check whether a PR for this branch already exists.
 Make sure the title follows `$conventional-commits`. Prefer a concise, human-readable title that explains why the change matters:
 
 BAD
+
 > ❌ perf(server): negotiate permessage-deflate on the websocket
 
 GOOD
+
 > ✅ perf(server): cut websocket frame size by 70%+ with gzipping
 
 Open the description with a simple explanation of the problem based on the user's original prompt, then briefly explain the solution. Do not lead with an implementation inventory:
 
 BAD
+
 > ❌ Removed implicit workspace carry-over from every "new thread" entry point (cmd+n / cmd+shift+o, sidebar v1/v2 buttons, command palette). New threads inherit only the project from context; branch, worktree, and env mode always come from the configured defaults. Delete buildContextualThreadOptions, startNewThreadInProjectFromContext, and the v1 sidebar's seed-context machinery.
 
 GOOD
+
 > ✅ My "new worktree" default was ignored when starting new threads on existing worktrees. Super unintuitive. Now your preferences always apply.
 
 Use the applicable sections from this body structure in this exact order. Replace every placeholder and omit sections that have no content:
@@ -48,7 +52,7 @@ Use the applicable sections from this body structure in this exact order. Replac
 
 ## 📸 Screenshots
 
-<Attach screenshots for every visual change.>
+<Attach screenshots for every visual change. Always inline images instead of linking to them.>
 
 ## 🔗 Issues
 
