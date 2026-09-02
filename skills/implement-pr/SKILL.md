@@ -1,22 +1,75 @@
 ---
 name: implement-pr
-description: "Implement a piece of work based on a spec or set of tickets, commit to a new branch and create a PR"
+description: Implement a change and deliver a green, review-ready pull request with explicit scope and evidence.
 disable-model-invocation: true
 ---
 
-Implement the work described by the user in the spec or tickets. Claim the tickets you are working on.
+# Implement PR
 
-Use `$ponytail ultra` as a strict guideline.
-Use `$tdd` where possible, at pre-agreed seams.
-If doing user-facing changes always verify the entire flow end-to-end with a browser, iOS simulator or Android emulator.
+Own the change through a green, review-ready PR. Do not stop at code completion.
 
-Run the full check suite (typechecking, linting, tests) once at the end as per repository guidelines.
+## 1. Take ownership of linked work
 
-Once done, run `$implementation-review` on the work.
+For every linked ticket or work item, record ownership before implementation:
 
-Commit your work to a new branch from the current base.
+1. Use the tracker's assignee field to assign the item to the currently authenticated user.
+2. If assignment is unavailable, use the tracker's explicit ownership or in-progress mechanism.
+3. Read the item back and verify that the ownership change was saved.
 
-Fetch the base branch. If it moved, merge it in, resolve conflicts, and re-run typechecking and the full test suite before continuing.
+This step is complete only when every linked item visibly records who owns the work. If the tracker cannot record ownership or rejects the update, stop and report the exact limitation.
 
-Push the branch to origin and open a pull request using `$file-pr`.
-Monitor the PR using `$babysit-pr`.
+## 2. Establish the contract
+
+Read the request, linked tickets or spec, repository instructions, and relevant code before editing. Keep a short working contract with five parts:
+
+- **Outcome:** observable behavior that must exist.
+- **Preserve:** behavior and interfaces that must stay unchanged.
+- **Scope:** files, packages, and systems the request permits changing.
+- **Evidence:** focused checks that prove the outcome and preserved behavior.
+- **Stop:** the PR, required CI, and requested review state that define completion.
+
+Resolve repository facts by inspection. Choose defaults for internal, reversible decisions that follow existing patterns and are cheap to change. Ask the user only when a choice changes product behavior, visible UX, data meaning, permissions, security, cost, compatibility, is destructive or expensive to reverse, requires authority or credentials, or needs information only the user has. Include a recommended default and the boundary reason with every question.
+
+## 3. Isolate the work
+
+Inspect the current branch and worktree. Preserve unrelated changes. Create a task branch from the current base unless the harness already isolated the task on its own branch.
+
+## 4. Implement the smallest complete change
+
+Use `$ponytail ultra`. Follow repository conventions and reuse established seams. Add only behavior required by the contract. Keep types precise from the lowest changed boundary to the highest consumer.
+
+Add focused tests at the stable behavioral seam. Skip tests that only memorialize deleted behavior, duplicate type checks, or restate implementation details.
+
+For visual or interactive work, use the browser, Android emulator or iOS simulator to check the affected states and responsive behavior. Capture evidence needed by the PR. Always use iOS simulator instead of Android emulator if available to save system resources.
+
+## 5. Verify progressively
+
+Run the narrowest relevant checks while iterating. Before review, run the affected package's complete test, typecheck, lint, and build commands that the repository documents. Record commands and results for the PR.
+
+## 6. Review against the contract
+
+Run `$code-review` and `$ponytail-review` in parallel. Treat findings as hypotheses:
+
+1. Verify each finding against the working contract and current code.
+2. Fix every valid, in-scope finding.
+3. Record false positives and out-of-scope findings without expanding the change.
+4. Re-run affected checks and the relevant review until no valid in-scope finding remains.
+
+Review feedback cannot expand the contract silently. Escalate any finding that requires a product, data, security, cost, compatibility, or destructive choice.
+
+## 7. Reconcile with the base branch
+
+Fetch the remote base branch. Integrate it using the repository's established merge or rebase convention. Resolve conflicts in favor of the contract, then repeat the affected checks.
+
+## 8. File and babysit the PR
+
+Use `$conventional-commits` for branch, commit, and PR naming. Commit the complete change, push it, and use `$file-pr` to open the PR with:
+
+- the contract outcome and scope,
+- test and review evidence,
+- screenshots or recordings for all visual changes,
+- linked tickets and any verified follow-up work.
+
+Use `$babysit-pr` until required CI and review automation are green. Address valid review feedback with `$address-pr-comments`, re-run the affected evidence, and continue babysitting.
+
+Finish only when the PR is merge-ready or an external blocker remains. Report the PR URL, verified checks, review state, and the exact blocker when applicable.
