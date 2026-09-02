@@ -10,13 +10,7 @@ Own the change through a green, review-ready PR. Do not stop at code completion.
 
 ## 1. Take ownership of linked work
 
-For every linked ticket or work item, record ownership before implementation:
-
-1. Use the tracker's assignee field to assign the item to the currently authenticated user.
-2. If assignment is unavailable, use the tracker's explicit ownership or in-progress mechanism.
-3. Read the item back and verify that the ownership change was saved.
-
-This step is complete only when every linked item visibly records who owns the work. If the tracker cannot record ownership or rejects the update, stop and report the exact limitation.
+For every linked ticket or work item, record ownership before implementation: Use the tracker's assignee field to assign the item to the currently authenticated user. If assignment is unavailable, use the tracker's explicit ownership or in-progress mechanism.
 
 ## 2. Establish the contract
 
@@ -30,23 +24,19 @@ Read the request, linked tickets or spec, repository instructions, and relevant 
 
 Resolve repository facts by inspection. Choose defaults for internal, reversible decisions that follow existing patterns and are cheap to change. Ask the user only when a choice changes product behavior, visible UX, data meaning, permissions, security, cost, compatibility, is destructive or expensive to reverse, requires authority or credentials, or needs information only the user has. Include a recommended default and the boundary reason with every question.
 
-## 3. Isolate the work
-
-Inspect the current branch and worktree. Preserve unrelated changes. Create a task branch from the current base unless the harness already isolated the task on its own branch.
-
-## 4. Implement the smallest complete change
+## 3. Implement the smallest complete change
 
 Use `$ponytail ultra`. Follow repository conventions and reuse established seams. Add only behavior required by the contract. Keep types precise from the lowest changed boundary to the highest consumer.
 
 Add focused tests at the stable behavioral seam. Skip tests that only memorialize deleted behavior, duplicate type checks, or restate implementation details.
 
-For visual or interactive work, use the browser, Android emulator or iOS simulator to check the affected states and responsive behavior. Capture evidence needed by the PR. Always use iOS simulator instead of Android emulator if available to save system resources.
+For visual or interactive work, use the browser, Android emulator or iOS simulator to check the affected states and responsive behavior. Capture evidence needed by the PR.
 
-## 5. Verify progressively
+## 4. Verify
 
-Run the narrowest relevant checks while iterating. Before review, run the affected package's complete test, typecheck, lint, and build commands that the repository documents. Record commands and results for the PR.
+Before review, run the affected package's complete test, typecheck, lint, and build commands that the repository documents. Record commands and results for the PR.
 
-## 6. Review against the contract
+## 5. Review against the contract
 
 Run `$code-review` and `$ponytail-review` in parallel. Treat findings as hypotheses:
 
@@ -57,17 +47,13 @@ Run `$code-review` and `$ponytail-review` in parallel. Treat findings as hypothe
 
 Review feedback cannot expand the contract silently. Escalate any finding that requires a product, data, security, cost, compatibility, or destructive choice.
 
-## 7. Reconcile with the base branch
+## 6. File and babysit the PR
 
-Fetch the remote base branch. Integrate it using the repository's established merge or rebase convention. Resolve conflicts in favor of the contract, then repeat the affected checks.
-
-## 8. File and babysit the PR
-
-Use `$conventional-commits` for branch, commit, and PR naming. Commit the complete change, push it, and use `$file-pr` to open the PR with:
+Commit the complete change, push it, and use `$file-pr` to open the PR with:
 
 - the contract outcome and scope,
 - test and review evidence,
-- screenshots or recordings for all visual changes,
+- screenshots for all visual changes,
 - linked tickets and any verified follow-up work.
 
 Use `$babysit-pr` until required CI and review automation are green. Address valid review feedback with `$address-pr-comments`, re-run the affected evidence, and continue babysitting.
