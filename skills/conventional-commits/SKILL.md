@@ -54,6 +54,10 @@ A wayfinder map ticket/issue is always `wayfinder`, and a spec is always `spec` 
 - Footers: one blank line after the body. Each footer is `Token: value` or `Token #value`. The token replaces spaces with `-` (e.g. `Reviewed-by`, `Refs`), **except** `BREAKING CHANGE`.
 - Breaking change: either `!` in the prefix, or a footer `BREAKING CHANGE: <description>` — the token must be uppercase (`BREAKING-CHANGE` is synonymous).
 
+**Language:**
+
+- Always use american english.
+
 ## Common presets
 
 Reach for these exact messages when the diff matches — they keep recurring commits consistent:
