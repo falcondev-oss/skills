@@ -49,12 +49,7 @@ Review feedback cannot expand the contract silently. Escalate any finding that r
 
 ## 6. File and babysit the PR
 
-Commit the complete change, push it, and use `$file-pr` to open the PR with:
-
-- the contract outcome and scope,
-- test and review evidence,
-- screenshots for all visual changes,
-- linked tickets and any verified follow-up work.
+Commit the complete change, push it, and use `$file-pr` to open the PR.
 
 Use `$babysit-pr` until required CI and review automation are green. Address valid review feedback with `$address-pr-comments`, re-run the affected evidence, and continue babysitting.
 

@@ -23,12 +23,42 @@ BAD
 GOOD
 > ✅ My "new worktree" default was ignored when starting new threads on existing worktrees. Super unintuitive. Now your preferences always apply.
 
-The description must list every review that ran, with the number of issues it found and how many of those you fixed. Include reviews that found nothing, and name any finding you left unfixed with its reason:
+Use the applicable sections from this body structure in this exact order. Replace every placeholder and omit sections that have no content:
+
+```markdown
+## 📝 Summary
+
+<Explain the problem, then the solution in plain language.>
+
+## 📦 Scope
+
+- <Name the user-visible behavior and main areas changed.>
+
+## ✅ Verification
+
+- `<command>`: <result>
+
+## 🔍 Reviews
 
 | Review   | Found   | Fixed   |
 | -------- | ------- | ------- |
 | <review> | <count> | <count> |
 
-Link all tickets it closes and always attach screenshots for any visual changes.
+<If any finding remains unfixed, name it and explain why.>
+
+## 📸 Screenshots
+
+<Attach screenshots for every visual change.>
+
+## 🔗 Issues
+
+<Write "Closes #123" for every ticket the PR closes.>
+
+## ⚠️ Needs attention
+
+<List follow-up work, known limitations, or other issues that need the user's attention.>
+```
+
+List every review that ran, including reviews that found nothing. Never claim a check or review ran unless it did.
 
 Open a real PR, not a draft. Add the `skip-ci` and `skip-deploy` labels to the PR, if the user requests to skip ci and the labels exist.
