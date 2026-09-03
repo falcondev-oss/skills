@@ -7,9 +7,9 @@ description: File a PR from the current branch. Use when the user asks to file, 
 
 Before filing, check whether a PR for this branch already exists.
 
-PR title and body must be in american english.
+PR title and body must be in american english. Use the `$show-me` skill to improve PR readability.
 
-Make sure the title follows `$conventional-commits`. Prefer a concise, human-readable title that explains why the change matters:
+Make sure the title follows the `$conventional-commits` skill. Prefer a concise, human-readable title that explains why the change matters:
 
 BAD
 
