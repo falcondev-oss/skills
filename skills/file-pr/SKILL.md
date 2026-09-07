@@ -7,7 +7,7 @@ description: File a PR from the current branch. Use when the user asks to file, 
 
 Before filing, check whether a PR for this branch already exists.
 
-PR title and body must be in american english. Use the `$show-me` skill to improve PR readability.
+PR title and body must be in american english.
 
 Make sure the title follows the `$conventional-commits` skill. Prefer a concise, human-readable title that explains why the change matters:
 
@@ -34,11 +34,11 @@ Use the applicable sections from this body structure in this exact order. Replac
 ```markdown
 ## 📝 Summary
 
-<Explain the problem, then the solution in plain language.>
+<Explain the problem, then the solution in plain language using the `$unslop` skill. This should be short, concise, and human-readable.>
 
-## 📦 Scope
+## 📦 Changes
 
-- <Name the user-visible behavior and main areas changed.>
+- <Use the `$show-me` skill to display all changes made in code, config, behavior, documentation, CI, and tests.>
 
 ## ✅ Verification
 
