@@ -38,7 +38,7 @@ Use the applicable sections from this body structure in this exact order. Replac
 
 ## 📦 Changes
 
-- <Use the `$show-me` skill to display all changes made in code, config, behavior, documentation, CI, and tests.>
+- <Name user visible and main area changes>
 
 ## ✅ Verification
 
