@@ -5,7 +5,7 @@ description: Monitor a pull request through review and CI. Use when the user ask
 
 # Babysit PR
 
-If your harness offers tools to monitor a PR, use them so you can respond when comments arrive. Otherwise, poll the PR for new comments and checks.
+If your harness offers tools to monitor a PR, use them so you can respond when comments arrive. Otherwise wait inside a single blocking command that returns once the PR's state actually moves, so one wait costs one step: block on the run (`gh run watch --exit-status`), or sleep and then read, chained in the same command. Reserve a bare status read for the first look and the final confirmation.
 
 Some repos we work in have AI review bots. They're helpful, even if they are not always right.
 

@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Implement PR
 
-Own the change through a green, review-ready PR. Do not stop at code completion.
+Own the change through a green, review-ready PR. Completion is the merge-ready PR, not the finished code.
 
 ## 1. Take ownership of linked work
 
@@ -28,6 +28,8 @@ Resolve repository facts by inspection. Choose defaults for internal, reversible
 
 Use the `$ponytail ultra` skill. Follow repository conventions and reuse established seams. Add only behavior required by the contract. Keep types precise from the lowest changed boundary to the highest consumer.
 
+Read what the contract's open questions need, then edit. Once a read stops changing the plan, the reading is done: start implementing.
+
 Add focused tests at the stable behavioral seam. Skip tests that only memorialize deleted behavior, duplicate type checks, or restate implementation details.
 
 For visual or interactive work, use the browser, Android emulator or iOS simulator to check the affected states and responsive behavior. Capture evidence needed by the PR.
@@ -36,16 +38,18 @@ For visual or interactive work, use the browser, Android emulator or iOS simulat
 
 Before review, run the affected package's complete test, typecheck, lint, and build commands that the repository documents. Record commands and results for the PR.
 
-## 5. Review against the contract
+## 5. Review cold
 
-Run the `$code-review` and `$ponytail-review` skills in parallel. Treat findings as hypotheses:
+Dispatch `$code-review` and `$ponytail-review` in parallel as subagents, each handed the diff and the contract and nothing else.
 
-1. Verify each finding against the working contract and current code.
+One cold round. Treat findings as hypotheses:
+
+1. Verify each finding against the contract and current code.
 2. Fix every valid, in-scope finding.
-3. Record false positives and out-of-scope findings without expanding the change.
-4. Re-run affected checks and the relevant review until no valid in-scope finding remains.
+3. Record false positives and out-of-scope findings, leaving the change as it stands.
+4. Re-run the checks your fixes touched, and re-review the fixes alone.
 
-Review feedback cannot expand the contract silently. Escalate any finding that requires a product, data, security, cost, compatibility, or destructive choice.
+A finding that would widen the contract is an escalation under step 2's boundary, carrying a recommended default and the boundary reason.
 
 ## 6. File and babysit the PR
 

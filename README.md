@@ -27,3 +27,4 @@ Then run the [`setup-falcondev-oss-skills`](skills/setup-falcondev-oss-skills/SK
 | [`shareflare`](skills/shareflare/SKILL.md) | Shares any local file through a public URL using `SHAREFLARE_URL` and `SHAREFLARE_TOKEN`, including artifacts for GitHub issues and pull requests. |
 | [`file-pr`](skills/file-pr/SKILL.md) | File a PR from the current branch |
 | [`babysit-pr`](skills/babysit-pr/SKILL.md) | Monitor a pull request through review and CI |
+| [`ponytail-review`](skills/ponytail-review/SKILL.md) | Reviews a diff for over-engineering only: reinvented standard library, unneeded dependencies, speculative abstractions, dead flexibility. One line per finding — location, what to cut, what replaces it — and a `net: -<N> lines possible` score. Reads an accompanying contract or ticket as the line between speculative and required. |
