@@ -54,6 +54,8 @@ Use the applicable sections from this structure in this exact order. Replace eve
 | -------- | ------- | ------- |
 | <review> | <count> | <count> |
 
+<Tell the user what you changed during the review loop>
+
 - <Every finding with its verdict: fixed, false positive, or out of scope, and why.>
 
 ## ⚠️ Needs attention
