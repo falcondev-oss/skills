@@ -38,7 +38,7 @@ Use the applicable sections from this structure in this exact order. Replace eve
 ```markdown
 ## 📝 Summary
 
-<Explain the problem, then the solution in plain language using the `$unslop` skill. This should be short, concise, and human-readable.>
+<Explain the problem, then the solution in plain language. This should be short, concise, and human-readable.>
 
 ## 📦 Changes
 

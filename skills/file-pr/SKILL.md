@@ -34,7 +34,7 @@ Use the applicable sections from this body structure in this exact order. Replac
 ```markdown
 ## 📝 Summary
 
-<Explain the problem, then the solution in plain language using the `$unslop` skill. This should be short, concise, and human-readable.>
+<Explain the problem, then the solution in plain language. This should be short, concise, and human-readable.>
 
 ## 📦 Changes
 
