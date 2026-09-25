@@ -40,7 +40,7 @@ Before review, run the affected package's complete test, typecheck, lint, and bu
 
 ## 5. Review cold
 
-Dispatch `$code-review` and `$ponytail-review` in parallel as subagents, each handed the diff and the contract and nothing else.
+Dispatch `$code-review`, `$ponytail-review` and `$bug-review` in parallel as subagents, each handed the diff and the contract and nothing else.
 
 One cold round. Treat findings as hypotheses:
 
