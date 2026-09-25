@@ -14,7 +14,7 @@ For every linked ticket or work item, record ownership before implementation: Us
 
 ## 2. Establish the contract
 
-Read the request, linked tickets or spec, repository instructions, and relevant code before editing. Keep a short working contract with five parts:
+Read the request, linked tickets or spec, repository instructions, and relevant code before editing. Write a short working contract and a task checklist to a git-ignored file (`.claude/tasks.md` when `git check-ignore` confirms `.claude/` is ignored). Tick items off and add new ones as you find them; after compaction, re-read the file instead of the summary. The contract has five parts:
 
 - **Outcome:** observable behavior that must exist.
 - **Preserve:** behavior and interfaces that must stay unchanged.
