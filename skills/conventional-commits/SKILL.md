@@ -89,7 +89,7 @@ The feedback run. Re-read the drafted message against both the spec and the _sta
 - **Atomic**: the staged diff is one logical change; nothing unrelated is bundled in.
 - **Description**: imperative, concise, true to the change, and led by substance — no leading verb that merely echoes the type or fills space.
 - **Body/footers** (if any): blank-line separated; footer tokens well-formed; any breaking change flagged with `!` or an uppercase `BREAKING CHANGE:` footer.
-- **Authorship**: the last footer serves the change, and the message ends there — no tool or agent trailer past it (below).
+- **Authorship**: the attribution footer is exactly the one the Authorship section below asks for, and nothing follows it.
 
 ## Branches, PRs, and issues
 
@@ -101,13 +101,7 @@ The same `type` vocabulary and the subject-line rules apply, and each is verifie
 
 ## Authorship
 
-As per the EU AI act you must add this footer to every commit:
-
-```
-Created with AI. Verified by a human.
-
-Co-authored-by: <LLM/Agent name> <LLM/Agent email>
-```
+Add exactly the attribution footer the harness or user instructions specify.
 
 ### Commit-message formatting
 
