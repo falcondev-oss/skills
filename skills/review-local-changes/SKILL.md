@@ -12,7 +12,7 @@ The **local changes** are everything in the working tree that the default branch
 
 ## 1. Review cold
 
-Dispatch `$code-review` and `$ponytail-review` in parallel as subagents, each handed the diff of the local changes and nothing else.
+Dispatch `$code-review`, `$ponytail-review` and `$bug-review` in parallel as subagents, each handed the diff of the local changes and nothing else.
 
 One cold round. Treat findings as hypotheses:
 
