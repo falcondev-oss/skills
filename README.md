@@ -30,4 +30,5 @@ Then run the [`setup-falcondev-oss-skills`](skills/setup-falcondev-oss-skills/SK
 | [`babysit-pr`](skills/babysit-pr/SKILL.md) | Monitor a pull request through review and CI |
 | [`ponytail-review`](skills/ponytail-review/SKILL.md) | Reviews a diff for over-engineering only: reinvented standard library, unneeded dependencies, speculative abstractions, dead flexibility. One line per finding — location, what to cut, what replaces it — and a `net: -<N> lines possible` score. Reads an accompanying contract or ticket as the line between speculative and required. |
 | [`bug-review`](skills/bug-review/SKILL.md) | Reviews a diff for merge-blocking bugs only. Each finding carries `file:line`, why it is wrong, and how to demonstrate the failure; unconfirmed suspicions are marked with where it looked. |
+| [`quick-iteration`](skills/quick-iteration/SKILL.md) | Enter a quick iteration session |
 | [`unslop`](skills/unslop/SKILL.md) | Cuts AI tells from any writing: filler, AI vocabulary, em dashes, hedging, mannered prose, over-compression. Copy of [`cursor/plugins` unslop](https://github.com/cursor/plugins/tree/main/pstack/skills/unslop) with model invocation enabled. |
