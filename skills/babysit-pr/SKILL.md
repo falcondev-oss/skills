@@ -5,7 +5,7 @@ description: Monitor a pull request through review and CI. Use when the user ask
 
 # Babysit PR
 
-If your harness offers tools to monitor a PR, use them so you can respond when comments arrive. Otherwise wait inside a single blocking command that returns once the PR's state actually moves, so one wait costs one step: block on the run (`gh run watch --exit-status`), or sleep and then read, chained in the same command. Reserve a bare status read for the first look and the final confirmation.
+Wait on events, not the clock. If your harness offers a PR watcher (e.g. `watch_pull_request`), start it and end your turn: it wakes you when checks finish, comments arrive, or the branch falls behind. Otherwise run one blocking command in the background (`gh pr checks <number> --watch`, `gh run watch --exit-status`) and act when it exits. Reserve a bare status read for the first look and the final confirmation.
 
 Only act on checks and comments newer than the latest push. Verify every bot finding against the source before changing code. Fix real findings and CI failures, distinguish repository failures from infrastructure flakes, and reply with a written reason when dismissing false positives.
 
