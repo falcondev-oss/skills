@@ -9,7 +9,7 @@ Wait on events, not the clock. If your harness offers a PR watcher (e.g. `watch_
 
 Only act on checks and comments newer than the latest push. Verify every bot finding against the source before changing code. Fix real findings and CI failures, distinguish repository failures from infrastructure flakes, and reply with a written reason when dismissing false positives.
 
-Keep an eye on changes to the base branch and rebase when needed.
+When the PR falls behind its base branch or conflicts with it, merge the latest base into the PR branch, re-run the checks the merge affects, and push. Merging keeps every push a fast-forward; rewriting the pushed history needs the user's go-ahead.
 
 If a review bot leaves feedback you believe is not worth addressing, reply and resolve the comment. Format comments left on the user's behalf as:
 
