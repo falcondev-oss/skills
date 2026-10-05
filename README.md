@@ -21,6 +21,6 @@ npx skills@latest add falcondev-oss/skills -g
 | [`shareflare`](skills/shareflare/SKILL.md) | Shares any local file through a public URL using `SHAREFLARE_URL` and `SHAREFLARE_TOKEN`, including artifacts for GitHub issues and pull requests. |
 | [`file-pr`](skills/file-pr/SKILL.md) | File a PR from the current branch |
 | [`babysit-pr`](skills/babysit-pr/SKILL.md) | Monitor a pull request through review and CI |
-| [`ponytail-review`](skills/ponytail-review/SKILL.md) | Reviews a diff for over-engineering only: reinvented standard library, unneeded dependencies, speculative abstractions, dead flexibility. One line per finding — location, what to cut, what replaces it — and a `net: -<N> lines possible` score. Reads an accompanying contract or ticket as the line between speculative and required. |
+| [`ponytail-review`](skills/ponytail-review/SKILL.md) | Reviews a diff for over-engineering only: reinvented standard library, duplicated repo helpers, unneeded dependencies, speculative abstractions, dead flexibility. One numbered line per finding — location, what to cut, what replaces it — and a `net: -<N> lines possible` score. Reads an accompanying contract or ticket as the line between speculative and required. |
 | [`bug-review`](skills/bug-review/SKILL.md) | Reviews a diff for merge-blocking bugs only. Each finding carries `file:line`, why it is wrong, and how to demonstrate the failure; unconfirmed suspicions are marked with where it looked. |
 | [`quick-iteration`](skills/quick-iteration/SKILL.md) | Enter a quick iteration session |
