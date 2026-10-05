@@ -8,6 +8,11 @@ description: >
   delete", "is this over-engineered", "simplify review", or invokes
   /ponytail-review. Complements correctness-focused review, this one only
   hunts complexity.
+metadata:
+  credits:
+    - skill: ponytail-review
+      author: Dietrich Gebert
+      url: "https://github.com/dietrichgebert/ponytail/blob/main/skills/ponytail-review/SKILL.md"
 ---
 
 Review diffs for unnecessary complexity. One line per finding: location, what
