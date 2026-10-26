@@ -1,6 +1,6 @@
 ---
 name: implement-pr
-description: Deliver a change as a green, merge-ready pull request. Use when the user says "implement" with an issue URL or file path, or asks for a change to be "merge ready".
+description: Deliver a change as a green, merge-ready pull request. Use when the user says "implement" about an issue URL, a file path, or a change discussed earlier in the conversation, or asks for a change to be "merge ready".
 ---
 
 # Implement PR
