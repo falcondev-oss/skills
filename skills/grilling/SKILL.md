@@ -35,8 +35,13 @@ Every round uses exactly these sections, in this order, under these headers. Lea
 ```markdown
 ### 🧭 Decisions for you
 
-🧭 **D1** - **<decision title>**: <question, worded so "yes" accepts the default; list the options when there are several>
+🧭 **D1** - **<decision title>**: <question, worded so "yes" accepts the default>
+
+- **a)** <option>
+- **b)** <option>
+
 ✅ **Default** - <your recommended answer>
+
 🔐 **Why you** - <the boundary it crosses: product, UX, domain term, data, permissions, security, cost, compatibility, irreversibility, authority, or knowledge only the user has>
 
 ---
@@ -51,6 +56,10 @@ Every round uses exactly these sections, in this order, under these headers. Lea
 
 - <running lookup> → gates <what it unblocks>
 ```
+
+Keep the blank lines exactly as shown: Markdown joins lines separated by a single line break into one paragraph, so without them ✅ and 🔐 run on after the question. ✅ and 🔐 each start their own line. When a decision has several options, list each as its own `a)`, `b)`, … bullet and name the letter in ✅; leave the list out for a plain yes/no question.
+
+Send the round as the last message of your turn, with nothing after it. Anything you post later (a follow-up, a reply to a hook) pushes the round into the collapsed work log, where the user won't see it. Ask in the message text, not in a question dialog that covers the rest of the round.
 
 Number 🧭 items `D1`, `D2`, … across the whole session, never restarting per round, so an answer like "D4: no" is unambiguous.
 
