@@ -93,7 +93,7 @@ Put the switcher in a single shared component so both sub-shapes can reuse it. L
 
 ### 5. Hand it over
 
-Screenshot every variant and show them in the chat, the way the [SKILL](SKILL.md) describes, then give the URL (and the `?variant=` keys) as an extra for flipping through live. Check the URL works from where the user is: a dev server bound to `localhost` is unreachable from their machine. The interesting feedback is usually **"I want the header from B with the sidebar from C"**, which is the actual design they want.
+Surface the URL (and the `?variant=` keys) once you have checked it opens from where the user is, the way the [SKILL](SKILL.md) describes: a dev server bound to `localhost` is unreachable from their machine. Where no working URL reaches them, show the variants in the chat instead. The user will flip through whenever they get to it. The interesting feedback is usually **"I want the header from B with the sidebar from C"**, which is the actual design they want.
 
 ### 6. Capture the answer and clean up
 
