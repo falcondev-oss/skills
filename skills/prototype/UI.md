@@ -53,7 +53,13 @@ Write down the plan in one line, in the prototype's location or a top-of-file co
 
 This works whether the user is here to push back or not.
 
-### 3. Generate radically different variants
+### 3. Seed every data state
+
+A variant that looks right on one sparse record hides how it breaks on real ones. List the data states the page can be in (empty, a single item, typical, many items, long names, each optional field missing, each kind of content alone), then write a scratch seed, named as a prototype, that gives each state its own record in the local dev database. Never seed a shared or production database.
+
+Done when every listed state has a record you can open, every variant has been checked in each state, and the hand-over links each one.
+
+### 4. Generate radically different variants
 
 Draft each variant. Hold each one to:
 
@@ -64,7 +70,7 @@ Draft each variant. Hold each one to:
 
 Variants must be **structurally different** within the house style: different layout, different information hierarchy, different primary affordance, not just different colours. Each one should look like it already shipped in this app. Three slightly-tweaked card grids isn't a UI prototype, it's wallpaper. If two drafts come out too similar, redo one with explicit "do not use a card grid" guidance.
 
-### 4. Wire them together
+### 5. Wire them together
 
 Create a single switcher component on the route:
 
@@ -85,7 +91,7 @@ For sub-shape A (existing page): keep all the existing data fetching above the s
 
 For sub-shape B (new page): the throwaway route under `/prototype/<name>` mounts the same switcher.
 
-### 5. Build the floating switcher
+### 6. Build the floating switcher
 
 A small fixed-position bar at the bottom-centre of the screen with three pieces:
 
@@ -102,11 +108,11 @@ Behaviour:
 
 Put the switcher in a single shared component so both sub-shapes can reuse it. Locate it wherever shared UI lives in the project.
 
-### 6. Hand it over
+### 7. Hand it over
 
-Surface the URL (and the `?variant=` keys) once you have checked it opens from where the user is, the way the [SKILL](SKILL.md) describes: a dev server bound to `localhost` is unreachable from their machine. Where no working URL reaches them, show the variants in the chat instead. Name any component you added because the house had none. The user will flip through whenever they get to it. The interesting feedback is usually **"I want the header from B with the sidebar from C"**, which is the actual design they want.
+Surface the URL (and the `?variant=` keys, plus one link per seeded data state) once you have checked it opens from where the user is, the way the [SKILL](SKILL.md) describes: a dev server bound to `localhost` is unreachable from their machine. Where no working URL reaches them, show the variants in the chat instead. Name any component you added because the house had none. The user will flip through whenever they get to it. The interesting feedback is usually **"I want the header from B with the sidebar from C"**, which is the actual design they want.
 
-### 7. Capture the answer and clean up
+### 8. Capture the answer and clean up
 
 Once a variant has won, capture the answer (which variant and why), then capture the prototype the way the [SKILL](SKILL.md) describes. Fold the winner into the real code and move the rest onto the throwaway branch, not into main:
 
