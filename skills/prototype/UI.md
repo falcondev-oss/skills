@@ -33,7 +33,17 @@ In both sub-shapes the floating bottom bar is identical.
 
 ## Process
 
-### 1. State the question and pick N
+### 1. Catalog the house style
+
+Variants are judged against the rest of the app, so they are built from the **house** design: the components, layouts and icons the app's other pages already use. Before drafting, inspect two or three sibling pages (in the browser and in code) and write down:
+
+- The page shells and layouts they use (headers, tabs, sections, sidebars, widget grids).
+- The components they render data with: the component library's (Nuxt UI, HeroUI, shadcn, ...) and the project's own shared or layer components (tables, filter bars, cards, empty states).
+- The icons and colours already bound to the concepts on this page (e.g. the icons a picker uses for yes / no). The same concept keeps the same icon.
+
+Done when every building block the variants need maps to a house component or pattern, or is listed as new because nothing in the house fits.
+
+### 2. State the question and pick N
 
 Default to **3 variants**. More than 5 stops being radically different and starts being noise, so cap there.
 
@@ -43,17 +53,18 @@ Write down the plan in one line, in the prototype's location or a top-of-file co
 
 This works whether the user is here to push back or not.
 
-### 2. Generate radically different variants
+### 3. Generate radically different variants
 
 Draft each variant. Hold each one to:
 
 - The page's purpose and the data it has access to.
-- The project's component library / styling system (TailwindCSS, shadcn, MUI, plain CSS, whatever).
+- The house catalog from step 1: compose house components, icons and spacing; write a new component only for a block the catalog lists as new.
+- The page's existing navigation (tabs, sections, routes). Keep it, and prototype inside it, unless the question is about the navigation itself. When the page has several tabs, prototype each tab on its own.
 - A clear exported component name, e.g. `VariantA`, `VariantB`, `VariantC`.
 
-Variants must be **structurally different**: different layout, different information hierarchy, different primary affordance, not just different colours. Three slightly-tweaked card grids isn't a UI prototype, it's wallpaper. If two drafts come out too similar, redo one with explicit "do not use a card grid" guidance.
+Variants must be **structurally different** within the house style: different layout, different information hierarchy, different primary affordance, not just different colours. Each one should look like it already shipped in this app. Three slightly-tweaked card grids isn't a UI prototype, it's wallpaper. If two drafts come out too similar, redo one with explicit "do not use a card grid" guidance.
 
-### 3. Wire them together
+### 4. Wire them together
 
 Create a single switcher component on the route:
 
@@ -74,7 +85,7 @@ For sub-shape A (existing page): keep all the existing data fetching above the s
 
 For sub-shape B (new page): the throwaway route under `/prototype/<name>` mounts the same switcher.
 
-### 4. Build the floating switcher
+### 5. Build the floating switcher
 
 A small fixed-position bar at the bottom-centre of the screen with three pieces:
 
@@ -91,11 +102,11 @@ Behaviour:
 
 Put the switcher in a single shared component so both sub-shapes can reuse it. Locate it wherever shared UI lives in the project.
 
-### 5. Hand it over
+### 6. Hand it over
 
-Surface the URL (and the `?variant=` keys) once you have checked it opens from where the user is, the way the [SKILL](SKILL.md) describes: a dev server bound to `localhost` is unreachable from their machine. Where no working URL reaches them, show the variants in the chat instead. The user will flip through whenever they get to it. The interesting feedback is usually **"I want the header from B with the sidebar from C"**, which is the actual design they want.
+Surface the URL (and the `?variant=` keys) once you have checked it opens from where the user is, the way the [SKILL](SKILL.md) describes: a dev server bound to `localhost` is unreachable from their machine. Where no working URL reaches them, show the variants in the chat instead. Name any component you added because the house had none. The user will flip through whenever they get to it. The interesting feedback is usually **"I want the header from B with the sidebar from C"**, which is the actual design they want.
 
-### 6. Capture the answer and clean up
+### 7. Capture the answer and clean up
 
 Once a variant has won, capture the answer (which variant and why), then capture the prototype the way the [SKILL](SKILL.md) describes. Fold the winner into the real code and move the rest onto the throwaway branch, not into main:
 
@@ -107,6 +118,7 @@ The full set of variants is the primary source, so it lands on the throwaway bra
 ## Anti-patterns
 
 - **Variants that differ only in colour or copy.** That's a tweak, not a prototype. Real variants disagree about structure.
-- **Sharing too much code between variants.** A shared `<Header>` is fine; a shared `<Layout>` defeats the point. Each variant should be free to throw out the layout.
+- **Sharing too much code between variants.** A shared `<Header>` is fine; a shared `<Layout>` defeats the point. Each variant should be free to rearrange the content area, while the page shell and navigation stay.
+- **Inventing a design language.** Hand-rolled cards, one-off icons and new colours make every variant look foreign, so the user judges the styling instead of the structure. Compose house components.
 - **Wiring variants to real mutations.** Read-only prototypes are fine. If a variant needs to mutate, point it at a stub: the question is "what should this look like", not "does the backend work".
 - **Promoting the prototype directly to production.** The variant code was written under prototype constraints (no tests, minimal error handling). Rewrite it properly when you fold it in.
